@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px;
+    padding: 50px;
 }
 
 .canvas {
@@ -19,15 +19,44 @@ body {
 
 .controls {
     margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls .controls__range {
+    margin-bottom: 20px;
+}
+
+.controls .controls__btns {
+    margin-bottom: 30px;
+}
+
+.controls__btns button {
+    all: unset;
+    cursor: pointer;
+    background-color: white;
+    padding: 12px 20px;
+    width: 80px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #bebebe;
+}
+.controls__btns button:hover {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .controls .controls__colors {
     display: flex;
 }
+
 .controls__colors .controls__color {
     width: 50px;
     height: 50px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     border-radius: 100%;
     cursor: pointer;
+}
+.controls__colors .controls__color:hover {
+    box-shadow: 0 6px 10px rgba(50, 50, 93, 0.11), 0 5px 3px rgba(0, 0, 0, 0.08);
 }
