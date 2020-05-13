@@ -3,12 +3,15 @@ const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
+const INITIAL_COLOR = "#2c2c2c"
+const CANVAS_SIZE = 700;
 
-ctx.strokeStyle = "#2c2c2c";
+canvas.width = CANVAS_SIZE;
+canvas.height = CANVAS_SIZE;
+
+ctx.strokeStyle = "INITIAL_COLOR";
+ctx.fillStyle = "INITIAL_COLOR";
 ctx.lineWidth = 2.5;
-
-canvas.width = 700;
-canvas.height = 700;
 
 let painting = false;
 let filling = false;
@@ -41,7 +44,8 @@ function onMouseMove(event) {
 // 이벤트 타겟 클릭 시 strokeStyle을 변경시켜 원하는 색상으로 그리게 하는 함수이다.
 function handleColorClick(event) {
     const color = event.target.style.backgroundColor;
-    ctx.strokeStyle = color;
+	ctx.strokeStyle = color;
+	ctx.fillStyle = color;
 }
 
 // Array.from이라고 하는 것은 object를 array로 만드는 역할을 한다.
@@ -61,15 +65,22 @@ function handleModeClick(event) {
         mode.innerText = "Fill";
     } else {
         filling = true;
-        mode.innerText = "Paint"
+		mode.innerText = "Paint"
     }
+}
+
+function handleCanvasClick(event) {
+	if(filling) {
+		ctx.fillRect(0, 0, canvas.width, canvas.width);
+	}
 }
 
 if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", startPainting);
     canvas.addEventListener("mouseup", stopPainting);
-    canvas.addEventListener("mouseleave", stopPainting);
+	canvas.addEventListener("mouseleave", stopPainting);
+	canvas.addEventListener("click", handleCanvasClick);
 }
 
 /*
